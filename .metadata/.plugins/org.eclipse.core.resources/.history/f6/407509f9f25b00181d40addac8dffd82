@@ -1,0 +1,9 @@
+package com.target.repository;
+
+import org.springframework.data.mongodb.repository.MongoRepository;
+
+import com.target.model.ProductPriceDetails;
+
+public interface ProductPriceRepository extends MongoRepository<ProductPriceDetails,String>{
+
+}

@@ -1,0 +1,49 @@
+package com.target.model;
+
+import java.math.BigInteger;
+
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown=true)
+@Document
+public class ProductPrice {
+	
+	@Id
+	private String id;
+	
+	private double value;
+	private String currencyType;
+	
+	public ProductPrice() {}
+	public ProductPrice(String id, double value, String currencyType) {
+		// TODO Auto-generated constructor stub
+		this.id = id;
+		this.value = value;
+		this.currencyType = currencyType;
+		
+	}
+	public String getId() {
+		return id;
+	}
+	public void setId(String productId) {
+		this.id = productId;
+	}
+	public double getCurrency() {
+		return value;
+	}
+	public void setCurrency(double currency) {
+		this.value = currency;
+	}
+	public String getCurrencyType() {
+		return currencyType;
+	}
+	public void setCurrencyType(String currencyType) {
+		this.currencyType = currencyType;
+	}
+	
+	
+
+}

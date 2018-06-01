@@ -1,0 +1,6 @@
+package mytestproject;
+
+@SpringBootApplication
+public class Hello {
+
+}

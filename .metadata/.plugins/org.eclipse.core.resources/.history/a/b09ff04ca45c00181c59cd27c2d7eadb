@@ -1,0 +1,11 @@
+package com.target.model;
+
+import java.util.Optional;
+
+import org.springframework.data.mongodb.repository.MongoRepository;
+
+public interface ProductPriceRepository extends MongoRepository<ProductPriceDetails,Long>{
+	
+	public ProductPriceDetails findDcoumentById(Long productId);
+
+}

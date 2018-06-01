@@ -1,0 +1,27 @@
+package com;
+
+import java.io.IOException;
+import cz.jirutka.spring.embedmongo.EmbeddedMongoFactoryBean;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.data.mongodb.core.*;
+import com.mongodb.MongoClient;
+import com.target.model.ProductPriceDetails;
+
+@Configuration
+public class MongoConfig {
+    private static final String MONGO_DB_URL = "localhost";
+    private static final String MONGO_DB_NAME = "embeded_db";
+    @Bean
+    public MongoTemplate mongoTemplate() throws IOException {
+        EmbeddedMongoFactoryBean mongo = new EmbeddedMongoFactoryBean();
+        mongo.setBindIp(MONGO_DB_URL);
+        MongoClient mongoClient = mongo.getObject();
+        MongoTemplate mongoTemplate = new MongoTemplate(mongoClient, MONGO_DB_NAME);
+        ProductPriceDetails test = new ProductPriceDetails("1",3.5,"USD");
+        mongoTemplate.insert(test);
+   //     mongoTemplate.insert(new ProductPriceDetails(2L,9.5,"USD"));
+   //     mongoTemplate.insert(new ProductPriceDetails(3L,4,"USD"));
+        return mongoTemplate;
+    }
+}

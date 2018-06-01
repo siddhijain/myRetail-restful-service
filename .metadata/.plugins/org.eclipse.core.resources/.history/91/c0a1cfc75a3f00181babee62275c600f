@@ -1,0 +1,57 @@
+package com.test.myprograms.dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
+
+import javax.sql.DataSource;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import com.test.myprograms.*;
+
+@Component
+public class JdbcTemplateDaoImpl {
+	
+	@Autowired
+	private DataSource dataSource;
+
+	public DataSource getDataSource() {
+		return dataSource;
+	}
+
+	public void setDataSource(DataSource dataSource) {
+		this.dataSource = dataSource;
+	}
+
+	public Employee getEmployees() {
+		
+		Employee e = new Employee();
+		Connection conn = null;
+		
+		try {
+			conn = dataSource.getConnection();
+			
+			PreparedStatement ps = conn.prepareStatement("Select * from Employee where employeeId=?");
+			ps.setInt(1, 1);
+			
+			ResultSet rs = ps.executeQuery();
+			if(rs.next()) {
+				e.setEmployeeId(rs.getInt(0));
+				e.setEmployeeName(rs.getString(0));
+			}
+			
+			
+			
+		}
+		catch(Exception exception) {
+			System.out.println(exception);
+		}
+		
+		return e;
+		
+	}
+
+}

@@ -1,0 +1,53 @@
+package com.target.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
+
+import com.target.model.Product;
+import com.target.model.ProductDetails;
+//import com.target.model.ProductDetails;
+import com.target.model.ProductPrice;
+import com.target.model.ProductDetailsRepository;
+
+@Service
+public class ProductDetailsService {
+	
+	@Autowired
+	private ProductDetailsRepository productPriceRepository;
+	
+	public Product getProductDetailsById(String productId) {
+		
+//		RestTemplate restTemplate = new RestTemplate();
+//		ProductDetails details = restTemplate.getForObject(url, ProductDetails.class);
+		
+		ProductDetails productDetails1 = new ProductDetails("15117729","Stroller");
+		ProductDetails productDetails2 = new ProductDetails("16483589","USD");
+		ProductDetails productDetails3 = new ProductDetails("16696652","EUR");
+		ProductDetails productDetails4 = new ProductDetails("15643793","INR");
+		productPriceRepository.save(productDetails1);
+		productPriceRepository.save(productDetails2);
+		productPriceRepository.save(productDetails3);
+		productPriceRepository.save(productDetails4);
+		
+//		List<ProductPrice> ppd = productPriceRepository.findAll();
+//		for(ProductPrice pc : ppd) System.out.println(pc.getCurrency() + "" + pc.getCurrencyType());
+		ProductPrice priceDetails = productPriceRepository.findDcoumentById(productId);
+//		System.out.println(priceDetails.getCurrency() + "" + priceDetails.getCurrencyType());
+		
+		Product p = new Product();
+		p.setId(productId);
+		p.setName("Test");
+		p.setCurrencyCode(priceDetails.getCurrencyType());
+		p.setCurrencyPrice(priceDetails.getCurrency());
+		return p;
+		
+	}
+	
+	public void updateProductDetailsById(String productId, double value, String currencyCode) {
+		ProductPrice priceDetails = productPriceRepository.findDcoumentById(productId);
+		priceDetails.setCurrency(value);
+		priceDetails.setCurrencyType(currencyCode);
+	}
+
+}

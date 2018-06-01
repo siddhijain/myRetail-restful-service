@@ -1,0 +1,18 @@
+package service;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public class HelloService {
+	
+	@Bean
+	public HelloService() {
+		return new HelloService();
+	}
+	
+	public String sayHelloService() {
+		return "hello from service";
+	}
+	
+
+}

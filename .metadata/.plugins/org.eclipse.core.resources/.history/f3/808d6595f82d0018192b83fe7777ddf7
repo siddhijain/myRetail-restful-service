@@ -1,0 +1,15 @@
+/**
+ * 
+ */
+
+var app = angular.module('userRegistration',[]);
+userRegistration.controller('userCtrl',function($scope){
+	
+	$scope.checkUsername = function(){
+	if($scope.username=="Siddhi" && $scope.password=="abc"){
+		alert("successful");
+	}
+	}
+	
+	
+});

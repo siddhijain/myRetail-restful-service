@@ -1,0 +1,17 @@
+package com.target.service;
+
+import org.springframework.stereotype.Service;
+
+import com.target.model.Product;
+
+@Service
+public class ProductService {
+	
+	public Product getProductDetails(Long productId) {
+		Product p = new Product();
+		p.setProductId(productId);
+		p.setProductName("Test");
+		
+	}
+
+}

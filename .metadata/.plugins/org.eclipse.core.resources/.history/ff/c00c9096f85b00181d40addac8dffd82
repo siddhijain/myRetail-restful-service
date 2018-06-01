@@ -1,0 +1,35 @@
+package com.target.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
+
+import com.target.model.Product;
+import com.target.model.ProductDetails;
+import com.target.model.ProductPriceDetails;
+import com.target.model.ProductPriceRepository;
+
+@Service
+public class ProductService {
+	
+	@Autowired
+	private ProductPriceRepository productPriceRepository;
+	
+	public Product getProductDetailsById(Long productId) {
+		
+		RestTemplate restTemplate = new RestTemplate();
+//		ProductDetails details = restTemplate.getForObject(url, ProductDetails.class);
+		
+		ProductPriceDetails priceDetails = productPriceRepository.findById();
+		System.out.println(priceDetails.getCurrency() + "" + priceDetails.getCurrencyType());
+		
+		
+		
+		Product p = new Product();
+		p.setProductId(productId);
+		p.setProductName("Test");
+		return p;
+		
+	}
+
+}

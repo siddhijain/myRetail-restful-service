@@ -1,0 +1,10 @@
+package com.target.model;
+
+public class RestResponse {
+	
+	private String id;
+	private String name;
+	private ProductPrice productPrice;
+	
+
+}

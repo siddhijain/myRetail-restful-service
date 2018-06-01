@@ -1,0 +1,10 @@
+/**
+ * 
+ */
+
+var app = angular.moduke('userRegistration',[]);
+userRegistration.controller('userCtrl',function($scope){
+	
+	
+	
+});

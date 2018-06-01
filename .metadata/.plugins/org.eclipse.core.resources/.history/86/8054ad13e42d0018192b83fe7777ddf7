@@ -1,0 +1,5 @@
+/**
+ * 
+ */
+
+var app = angular.app("userRegistration");

@@ -1,0 +1,10 @@
+/**
+ * 
+ */
+
+var app = angular.app("userRegistration");
+userRegistration.controller("userCtrl",{
+	
+	
+	
+});

@@ -1,0 +1,5 @@
+1521685816636	Rename package 'mytestproject'
+1521685840902	Rename type 'Hello'
+1521731537050	Move 'login.js' to 'js'
+1521736335923	Move 'jsp' to 'WEB-INF'
+1521737242450	Move 'welcome.jsp' to 'jsp'

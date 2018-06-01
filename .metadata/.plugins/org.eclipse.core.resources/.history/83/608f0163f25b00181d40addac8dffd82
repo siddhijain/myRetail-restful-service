@@ -1,0 +1,35 @@
+package com.target.model;
+
+import org.springframework.data.annotation.Id;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown=true)
+public class ProductPriceDetails {
+	
+	@Id
+	private Long productId;
+	private float currency;
+	private String currencyType;
+	public Long getProductId() {
+		return productId;
+	}
+	public void setProductId(Long productId) {
+		this.productId = productId;
+	}
+	public float getCurrency() {
+		return currency;
+	}
+	public void setCurrency(float currency) {
+		this.currency = currency;
+	}
+	public String getCurrencyType() {
+		return currencyType;
+	}
+	public void setCurrencyType(String currencyType) {
+		this.currencyType = currencyType;
+	}
+	
+	
+
+}
