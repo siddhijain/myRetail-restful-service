@@ -1,4 +1,4 @@
-package com.target.demo;
+/**package com.target.demo;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -13,4 +13,4 @@ public class DemoApplicationTests {
 	public void contextLoads() {
 	}
 
-}
+}*/

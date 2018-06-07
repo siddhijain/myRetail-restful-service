@@ -1,13 +1,18 @@
+/**
+ * 
+ * Product service is a RESTful service used to get product details and price. 
+ * 
+ * 
+ * @author sjain
+ * @version 1.0 
+ */
 package com.target.controller;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
-import java.util.concurrent.FutureTask;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -15,61 +20,61 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.target.model.Product;
 import com.target.model.ProductDetails;
 import com.target.model.ProductPrice;
-import com.target.service.ProductService;
+import com.target.service.ProductDetailsService;
+import com.target.service.ProductPriceService;
 
 @RestController
 @RequestMapping(value = "/products")
 public class ProductController {
-	
+
 	@Autowired
-	ProductService productService;
-	
+	ProductDetailsService productDetailsService;
+
+	@Autowired
+	ProductPriceService productPriceService;
+
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public Product getProductDetailsById(@PathVariable("id") String productId) {
 		int threadNum = 2;
-        ExecutorService executor = Executors.newFixedThreadPool(threadNum);
-  //      List<FutureTask<?>> taskList = new ArrayList<FutureTask<?>>();
-        Future<ProductPrice> productPriceTask = executor.submit(new Callable<ProductPrice>() {
-        	@Override
-        	public ProductPrice call() {
-        		return productService.getProductPriceDetailsById(productId);
-        	}
-        	});
-        
-        Future<ProductDetails> productDetailsTask = executor.submit(new Callable<ProductDetails>() {
-        	@Override
-        	public ProductDetails call() {
-        		return productService.getProductDetailsById(productId);
-        	}
-        });
-        
-        Product p = new Product();
-        p.setId(productId);
-        try {
+		ExecutorService executor = Executors.newFixedThreadPool(threadNum);
+		Future<ProductPrice> productPriceTask = executor.submit(new Callable<ProductPrice>() {
+			@Override
+			public ProductPrice call() {
+				return productPriceService.getProductPriceDetailsById(productId);
+			}
+		});
+
+		Future<ProductDetails> productDetailsTask = executor.submit(new Callable<ProductDetails>() {
+			@Override
+			public ProductDetails call() {
+				return productDetailsService.getProductDetailsById(productId);
+			}
+		});
+
+		Product p = new Product();
+		p.setId(productId);
+		try {
 			p.setName(productDetailsTask.get().getProductName());
 			p.setCurrencyPrice(productPriceTask.get().getCurrency());
-	        p.setCurrencyCode(productPriceTask.get().getCurrencyType());
+			p.setCurrencyCode(productPriceTask.get().getCurrencyType());
 		} catch (InterruptedException | ExecutionException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-        
-        executor.shutdown();
-        return p;
 
-       
-		
+		executor.shutdown();
+		return p;
 	}
-	
+
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public void updateProductDetailsById(@PathVariable("id") String productId, @RequestBody Product product) {
-		productService.updateProductDetailsById(productId,product.getCurrencyPrice(),product.getCurrencyCode());
+		productDetailsService.updateProductDetailsById(productId, product.getCurrencyPrice(),
+				product.getCurrencyCode());
 	}
 
 }

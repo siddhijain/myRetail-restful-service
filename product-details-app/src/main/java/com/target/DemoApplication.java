@@ -1,5 +1,8 @@
+/**
+ * Entry point of springboot app
+ * 
+ */
 package com.target;
-
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -11,4 +14,3 @@ public class DemoApplication {
 		SpringApplication.run(DemoApplication.class, args);
 	}
 }
-//

@@ -4,12 +4,12 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.target</groupId>
-	<artifactId>product-details-app</artifactId>
+	<artifactId>demo</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 
-	<name>product-details-app</name>
-	<description>RESTful web service to get product details</description>
+	<name>demo</name>
+	<description>RESTful web service</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
