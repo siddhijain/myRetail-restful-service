@@ -1,4 +1,9 @@
-package com.target.model;
+/**
+ * Model class representing product. 
+ * @author sjain
+ * @version 1.0 
+ */
+/**package com.target.model;
 
 
 public class Product {
@@ -40,4 +45,4 @@ public class Product {
 		this.currencyCode = currencyCode;
 	}
 
-}
+}*/

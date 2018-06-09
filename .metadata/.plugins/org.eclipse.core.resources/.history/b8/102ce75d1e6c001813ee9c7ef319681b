@@ -1,0 +1,38 @@
+/**
+ * Model class representing response of Product service
+ * author : sjain
+ * version : 1.0
+ */
+
+package com.target.model;
+
+public class ProductPriceResponse {
+	
+	private double value;
+	private String current_code;
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public ProductPrice getProductPrice() {
+		return currentPrice;
+	}
+
+	public void setProductPrice(ProductPrice currentPrice) {
+		this.currentPrice = currentPrice;
+	}
+
+}

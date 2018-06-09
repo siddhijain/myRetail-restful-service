@@ -3,14 +3,13 @@
  * author : sjain
  * version : 1.0
  */
-
 package com.target.model;
 
 public class RestResponse {
 
 	private String id;
 	private String name;
-	private ProductPrice productPrice;
+	private ProductPriceResponse currentPrice;
 
 	public String getId() {
 		return id;
@@ -28,12 +27,12 @@ public class RestResponse {
 		this.name = name;
 	}
 
-	public ProductPrice getProductPrice() {
-		return productPrice;
+	public ProductPriceResponse getProductPrice() {
+		return currentPrice;
 	}
 
-	public void setProductPrice(ProductPrice productPrice) {
-		this.productPrice = productPrice;
+	public void setProductPriceResponse(ProductPriceResponse currentPrice) {
+		this.currentPrice = currentPrice;
 	}
 
 }

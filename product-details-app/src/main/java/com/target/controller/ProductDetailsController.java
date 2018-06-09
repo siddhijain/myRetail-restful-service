@@ -1,3 +1,8 @@
+/**
+ * ProductDetails service is a RESTful service used to get product details. 
+ * @author sjain
+ * @version 1.0 
+ */
 package com.target.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;

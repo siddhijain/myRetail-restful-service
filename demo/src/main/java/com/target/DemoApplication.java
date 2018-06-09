@@ -1,3 +1,8 @@
+/**
+ * Entry point of springboot application
+ * @author sjain
+ * @version 1.0 
+ */
 package com.target;
 
 import org.springframework.boot.SpringApplication;

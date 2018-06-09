@@ -1,0 +1,14 @@
+package com.target;
+
+import org.springframework.context.event.ContextRefreshedEvent;
+import org.springframework.context.event.EventListener;
+
+public class DatabaseInitializer {
+	
+	@EventListener
+	public void seed(ContextRefreshedEvent event) {
+		seedProductPriceRepository();
+	}
+
+}
+}

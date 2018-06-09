@@ -1,0 +1,43 @@
+package com.target;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.ApplicationArguments;
+import org.springframework.boot.ApplicationRunner;
+import org.springframework.stereotype.Component;
+
+import com.target.model.ProductPrice;
+import com.target.model.ProductPriceRepository;
+
+@Component
+public class DataLoader implements ApplicationRunner {
+	
+	private ProductPriceRepository productPriceRepository;
+	
+	@Autowired
+	public DataLoader(ProductPriceRepository productPriceRepository) {
+		this.productPriceRepository = productPriceRepository;
+	}
+
+	@Override
+	public void run(ApplicationArguments args) throws Exception {
+		// TODO Auto-generated method stub
+		productPriceRepository.save(new ProductPrice("15117729", 3.5, "USD"));
+		productPriceRepository.save(new ProductPrice("16483589", 10, "USD"));
+		productPriceRepository.save(new ProductPrice("16696652", 12, "EUR"));
+		productPriceRepository.save(new ProductPrice("15643793", 45, "INR"));
+		productPriceRepository.save(new ProductPrice("12345632", 15, "USD"));
+		productPriceRepository.save(new ProductPrice("11111111", 5, "USD"));
+		productPriceRepository.save(new ProductPrice("23223232", 9, "EUR"));
+								
+	
+		ProductPrice price1 = 
+		ProductPrice price2 = 
+		ProductPrice price3 = 
+		ProductPrice price4 = 
+		ProductPrice price5 = 
+		ProductPrice price6 = 
+		ProductPrice price7 = new ProductPrice("55334455", 2, "INR");
+		
+	}
+
+}

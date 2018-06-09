@@ -1,12 +1,12 @@
 /**
  * This service is used to get and update Product details of products by id.
- * 
  * @author sjain
  * @version 1.0 
  */
 package com.target.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -20,9 +20,11 @@ public class ProductDetailsService {
 	@Autowired
 	private ProductPriceRepository productPriceRepository;
 
+	@Value("${endpoint.url}")
+	private String endpointURL;
+
 	public ProductDetails getProductDetailsById(String productId) {
-		String baseURL = "http://localhost:8044/productDetails/";
-		String url = baseURL + productId;
+		String url = endpointURL + productId;
 		RestTemplate restTemplate = new RestTemplate();
 		ProductDetails details = restTemplate.getForObject(url, ProductDetails.class);
 		return details;
